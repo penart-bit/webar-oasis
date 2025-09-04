@@ -193,15 +193,15 @@ A když si sedneš, najednou zaslechneš hudbu, která nikam nesměřuje. Prost�
   const englishTexts = [];
 
   // Store original and English translations
-  textElements.forEach((el, i) => {
-    originalTexts[i] = el.innerHTML; // use innerHTML to preserve links
+ textElements.forEach((el, i) => {
+  originalTexts[i] = el.innerHTML; // preserve HTML
 
-    if (el.tagName === 'H2') {
-      englishTexts[i] = "BUT WHAT IF YOU COULD STOP – RIGHT HERE – FOR JUST A MOMENT?";
-    } else if (i === 0) {
-      englishTexts[i] = `You're standing in a place that means nothing to you. Just passing through from your point A to your point B. Around you, there’s only gravel, a few forgotten tire tracks, and weeds that gave up a long time ago. Nothing to stop you. And definitely nothing to make your day better.`;
-    } else if (i === 1) {
-      englishTexts[i] = `Imagine this place changing. Not in a loud way. More like… quietly.
+  if (el.tagName === 'H2') {
+    englishTexts[i] = "BUT WHAT IF YOU COULD STOP – RIGHT HERE – FOR JUST A MOMENT?";
+  } else if (i === 0) { // first <p>
+    englishTexts[i] = `You're standing in a place that means nothing to you. Just passing through from your point A to your point B. Around you, there’s only gravel, a few forgotten tire tracks, and weeds that gave up a long time ago. Nothing to stop you. And definitely nothing to make your day better.`;
+  } else if (i === 2) { // second <p>
+    englishTexts[i] = `Imagine this place changing. Not in a loud way. More like… quietly.
 First, a few chairs appear - the kind that don’t shout for attention but simply say: you’re welcome here.
 Then comes greenery - somewhere between a forest and a dream.
 And when you sit down, you suddenly hear music that leads nowhere. It simply is.

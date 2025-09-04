@@ -94,8 +94,7 @@
           <div class="caption">What could have been...</div>
         `);
       }
-    </script>
-fetch('https://zlinskaoaza.wordpress.com/')
+      fetch('https://zlinskaoaza.wordpress.com/')
     .then(response => response.text())
     .then(html => {
         const parser = new DOMParser();
@@ -108,5 +107,7 @@ fetch('https://zlinskaoaza.wordpress.com/')
         console.error('Failed to fetch text:', err);
         document.getElementById('model-description').innerText = 'Failed to load description.';
     });
+    </script>
+
   </body>
 </html>

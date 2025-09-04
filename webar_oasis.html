@@ -36,7 +36,7 @@
     const link = document.getElementById('ar-link');
 
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      link.href = "oasis.usdz"; // iOS Quick Look
+      link.href = "oasis1.usdc"; // iOS Quick Look
       link.rel = "ar";
     } else if (/android/i.test(userAgent)) {
       link.href = `intent://arvr.google.com/scene-viewer/1.0?file=${location.origin}/oasis.glb#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;end;`;

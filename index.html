@@ -6,13 +6,17 @@
     <title>Oasis AR</title>
     <style>
       @font-face {
-        font-family: 'Droulers';
-        src: url('Droulers.otf') format('opentype');
-        font-family: 'NeueMontreal-Regular';
-        src: url('NeueMontreal-Regular.otf') format('opentype');
-        font-family: 'NeueMontreal-Bold';
-        src: url('NeueMontreal-Bold.otf') format('opentype');
-      }
+      font-family: 'Droulers';
+      src: url('Droulers.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'NeueMontreal-Regular';
+      src: url('NeueMontreal-Regular.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'NeueMontreal-Bold';
+      src: url('NeueMontreal-Bold.otf') format('opentype');
+    }
       body {
         margin: 0;
         padding: 0;
@@ -48,14 +52,15 @@
         bottom: 0;
         width: 100%;
 
-        #model-description {
-    font-family: 'Neuemontreal', sans-serif;
-    font-size: 1em;
-    margin-top: 10px;
-    max-width: 600px; /* adjust as needed */
-    line-height: 1.5;
-    color: #333;
-}
+      #model-description {
+      font-family: 'NeueMontreal-Regular', sans-serif;
+      font-size: 1em;
+      margin-top: 10px;
+      max-width: 600px;
+      line-height: 1.5;
+      text-align: center;
+      color: #fff;
+    }
     </style>
   </head>
   <body>
@@ -94,19 +99,6 @@
           <div class="caption">What could have been...</div>
         `);
       }
-      fetch('https://zlinskaoaza.wordpress.com/')
-    .then(response => response.text())
-    .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        // Adjust this selector to grab the part you want
-        const text = doc.querySelector('p')?.innerText || 'Description not found';
-        document.getElementById('model-description').innerText = text;
-    })
-    .catch(err => {
-        console.error('Failed to fetch text:', err);
-        document.getElementById('model-description').innerText = 'Failed to load description.';
-    });
     </script>
 
   </body>

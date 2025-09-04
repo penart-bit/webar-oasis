@@ -3,19 +3,74 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What could have been</title>
+    <title>Oasis AR</title>
+    <style>
+      @font-face {
+        font-family: 'Droulers';
+        src: url('Droulers.otf') format('opentype');
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+      .preview {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .caption {
+        font-family: 'Droulers', sans-serif;
+        font-size: 2.5em;
+        margin: 1em 0;
+      }
+      a, img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
-  
-    <body style="margin:0; padding:0; overflow:hidden; background:#fff;">
-    <!-- AR Quick Look with floor anchoring + 1:1 scale -->
-    <a href="oasis1.usdz#anchor=ar&allowsContentScaling=0&placement=floor" 
-       rel="ar" 
-       style="display:block; width:100%; height:100%;">
-      <!-- A bold, centered preview image to make the AR button obvious -->
-      <img src="oasis1.png" 
-           alt="View in AR" 
-           style="width:100%; height:100%; object-fit:contain;">
-      
-      <h1 style="font-family:"Droulers.otf"; font-size:3em;">What could have been...</h1>
+  <body>
+    <script>
+      const ua = navigator.userAgent.toLowerCase();
+      if (/iphone|ipad|ipod/.test(ua)) {
+        // iOS → USDZ with AR Quick Look
+        document.write(`
+          <div class="preview">
+            <a href="oasis1.usdz#anchor=ar&allowsContentScaling=0&placement=floor" rel="ar">
+              <img src="oasis1.png" alt="View in AR">
+            </a>
+          </div>
+          <div class="caption">What could have been...</div>
+        `);
+      } else if (/android/.test(ua)) {
+        // Android → GLB with Scene Viewer
+        document.write(`
+          <div class="preview">
+            <a href="intent://arvr.google.com/scene-viewer/1.0?file=${location.origin}/oasis1.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;end;">
+              <img src="oasis1.png" alt="View in AR">
+            </a>
+          </div>
+          <div class="caption">What could have been...</div>
+        `);
+      } else {
+        // Desktop fallback
+        document.write(`
+          <div class="preview">
+            <img src="oasis1.png" alt="Oasis Preview">
+          </div>
+          <div class="caption">What could have been...</div>
+        `);
+      }
+    </script>
   </body>
 </html>

@@ -38,7 +38,7 @@
     }
 
     .ar-container img {
-      max-width: 66%;
+      max-width: 100%;
       height: auto;
     }
 
@@ -51,9 +51,11 @@
 
     /* Main content */
     .content {
-      max-width: 800px;
-      margin: 0 auto 50px auto;
-      padding: 0 10px;
+      width: 100%;               /* Full width on small screens */
+      max-width: 75vw;           /* Maximum 75% of viewport width on larger screens */
+       margin: 0 auto 50px auto;  /* Center the content horizontally */
+  padding: 0 10px;           /* Small padding on the sides for mobile */
+  
       line-height: 1.6;
     }
      .content p {

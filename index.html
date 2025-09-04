@@ -50,14 +50,19 @@
     }
 
     /* Main content */
-    .content {
-      width: 100%;               /* Full width on small screens */
-      max-width: 75vw;           /* Maximum 75% of viewport width on larger screens */
-       margin: 0 auto 50px auto;  /* Center the content horizontally */
-  padding: 0 10px;           /* Small padding on the sides for mobile */
-  
-      line-height: 1.6;
-    }
+.content {
+  width: 100%;
+  margin: 0 auto 50px auto;
+  padding: 0 10px;
+  line-height: 1.6;
+}
+
+/* Larger screens (e.g., iPads and desktops) */
+@media (min-width: 768px) {
+  .content {
+    max-width: 75%;
+  }
+}
      .content p {
     font-family: 'NeueMontreal-Regular', sans-serif;
     font-size: 1em;

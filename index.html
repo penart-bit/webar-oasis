@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oasis AR</title>
-    <style>
-      @font-face {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oasis AR</title>
+  <style>
+    @font-face {
       font-family: 'Droulers';
       src: url('Droulers.otf') format('opentype');
     }
@@ -17,89 +17,125 @@
       font-family: 'NeueMontreal-Bold';
       src: url('NeueMontreal-Bold.otf') format('opentype');
     }
-      body {
-        margin: 0;
-        padding: 0;
-        background: #000;
-        color: #fff;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      }
-      .preview {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: top;
-        max-height: 80%;
-        width: 100%;
-      }
-      .preview img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
-      .caption {
-        font-family: 'Droulers', sans-serif;
-        font-size: 1.5em;
-        text-align: center;
-        margin: 0 0 1em 0;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
 
-      #model-description {
-      font-family: 'NeueMontreal-Regular', sans-serif;
-      font-size: 1em;
-      margin-top: 10px;
-      max-width: 600px;
-      line-height: 1.5;
-      text-align: center;
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
       color: #fff;
+      font-family: 'NeueMontreal-Regular', sans-serif;
+      overflow-y: scroll;
     }
-    </style>
-  </head>
-  <body>
-    <script>
-      const ua = navigator.userAgent.toLowerCase();
-      const isIOS = /iphone|ipod/.test(ua);
-      const isIPad = /ipad/.test(ua) || 
-                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-      if (isIOS || isIPad) {
-        // iOS + iPadOS → USDZ with AR Quick Look
-        document.write(`
-          <div class="preview">
-            <a href="oasis1.usdz#anchor=ar&allowsContentScaling=1&placement=floor" rel="ar">
-              <img src="oasis1.png" alt="View in AR">
-            </a>
-          </div>
-          <div class="caption">What could have been...</div>
-        `);
-      } else if (/android/.test(ua)) {
-        // Android → GLB with Scene Viewer
-        document.write(`
-          <div class="preview">
-            <a href="intent://arvr.google.com/scene-viewer/1.0?file=${location.origin}/oasis1.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;end;">
-              <img src="oasis1.png" alt="View in AR">
-            </a>
-          </div>
-          <div class="caption">What could have been...</div>
-        `);
-      } else {
-        // Desktop fallback
-        document.write(`
-          <div class="preview">
-            <img src="oasis1.png" alt="Oasis Preview">
-          </div>
-          <div class="caption">What could have been...</div>
-        `);
-      }
-    </script>
+    /* Sticky AR container */
+    .ar-container {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #000;
+      padding: 10px 0;
+      text-align: center;
+    }
 
-  </body>
+    .ar-container img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      font-family: 'Droulers', sans-serif;
+      font-size: 1.5em;
+      text-align: center;
+      margin: 10px 0 20px 0;
+    }
+
+    /* Main content */
+    .content {
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      padding: 0 10px;
+      line-height: 1.6;
+    }
+     .content p {
+    font-family: 'NeueMontreal-Regular', sans-serif;
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+
+  /* Headings */
+  .content h2 {
+    font-family: 'NeueMontreal-Bold', sans-serif;
+    font-size: 1.5em;
+    margin: 1em 0 0.5em 0;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="ar-container" id="ar-container">
+    <!-- AR content will be injected here via JS -->
+  </div>
+
+  <div class="caption">What could have been...</div>
+
+  <div class="content">
+    <!-- Copy your WordPress text here -->
+    <p>
+      Právě se ocitáš na místě, které pro tebe nic neznamená. Jen jím procházíš ze svého bodu A do svého bodu B. 
+      Okolo tebe je jen štěrk, pár zapomenutých stop od pneumatik a plevel, který to už dávno vzdal. 
+      Nic, co by tě zdrželo. A už vůbec nic, co by ti zlepšilo den.
+    </p>
+    <h2>
+ALE CO KDYBYS SE PRÁVĚ TADY MOHL/A NA CHVÍLI ZASTAVIT?</h2>
+    <p>
+      Představ si, že se to tu změní.
+Ne okázale. Spíš potichu.
+Nejdřív přibydou židle. Takové, které nelákají, ale vítají.
+Pak se objeví zeleň – něco mezi lesem a snem.
+
+A když si sedneš, najednou zaslechneš hudbu, která nikam nesměřuje. Prostě je.
+
+A když tě v téhle oáze napadne, že by to chtělo něco… voňavého, teplého, s pěnou navrchu – nedaleko tě čeká KAFÖ.
+Místo, kde se čas zpomaluje spolu s proudem vody přes filtr.
+Výběrová káva, něco malého na zub a atmosféra, která ladí s tím, co právě cítíš.
+Bez zbytečností a vegan-friendly.
+
+Díky AR technologii si tuhle oázu můžeš prohlédnout odkudkoliv. Z parku. Z domova. Z tramvaje.
+Nebo přímo ze štěrku, kde možná jednou skutečně vyroste.
+Klikni níže a podívej se, jak může vypadat místo, které si konečně zaslouží tvou pozornost.
+
+Štěrk zůstane. Ale všechno ostatní se může změnit. 🪄
+
+A když si sedneš, najednou zaslechneš hudbu, která nikam nesměřuje. Prostě je.
+      
+  
+    </p>
+  </div>
+
+  <script>
+    const ua = navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipod/.test(ua);
+    const isIPad = /ipad/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const arContainer = document.getElementById('ar-container');
+
+    if (isIOS || isIPad) {
+      arContainer.innerHTML = `
+        <a href="oasis1.usdz#anchor=ar&allowsContentScaling=1&placement=floor" rel="ar">
+          <img src="oasis1.png" alt="View in AR">
+        </a>
+      `;
+    } else if (/android/.test(ua)) {
+      arContainer.innerHTML = `
+        <a href="intent://arvr.google.com/scene-viewer/1.0?file=${location.origin}/oasis1.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;end;">
+          <img src="oasis1.png" alt="View in AR">
+        </a>
+      `;
+    } else {
+      arContainer.innerHTML = `
+        <img src="oasis1.png" alt="Oasis Preview">
+      `;
+    }
+  </script>
+
+</body>
 </html>
